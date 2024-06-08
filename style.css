@@ -1,0 +1,17 @@
+* {
+    user-select: none;
+}
+
+.template {
+    display: none;
+}
+
+#mainCard {
+    margin: auto;
+    margin-top: 10%;
+    width: 400px;
+}
+
+.task[complete="true"] {
+    opacity: 0.5;
+}

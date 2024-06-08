@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>To-Do</title>
+
+	<link rel="stylesheet" href="../Lib/bootstrap/css/bootstrap.css">
+	<script src="../Lib/bootstrap/js/bootstrap.js"></script>
+
+	<script src="../Lib/JQuery/JQuery.js"></script>
+
+	<link rel="stylesheet" href="../Lib/JQuery/jquery-ui/jquery-ui.css">
+	<script src="../Lib/JQuery/jquery-ui/jquery-ui.js"></script>
+
+	<link rel="stylesheet" href="style.css">
+	<script src="task.js" defer></script>
+	<script src="popup.js" defer></script>
+	<script src="script.js" defer></script>
+</head>
+
+<body>
+
+	<header class="d-flex justify-content-between bg-dark px-3 py-2">
+		<div class="d-flex align-items-center m-2">
+			<img src="./Res/award.svg" alt="">
+			<span class="text-white fs-4 fw-bolder">chievment</span>
+		</div>
+
+		<button class="btn btn-secondary">
+			<span class="fs-5 fw-bold">Setting</span>
+		</button>
+	</header>
+
+	<main>
+		<div class="card" id="mainCard">
+
+			<div class="card-header">
+				<span class="container fs-4 fw-bold">Todo</span>
+			</div>
+
+			<div class="card-body" id="taskList">
+
+				<!-- task will be there -->
+
+			</div>
+
+			<div class="card-footer d-flex justify-content-evenly">
+				<button class="btn btn-outline-primary px-5" id="createTask">
+					Create task
+				</button>
+				<button class="btn btn-outline-danger" id="resetTask">
+					Reset task
+				</button>
+			</div>
+
+		</div>
+	</main>
+
+	<footer></footer>
+
+	<div class="template">
+
+		<div class="card task" label="label" complete="false">
+			<div class="card-body d-flex justify-content-between">
+				<span class="container d-flex align-items-center">
+					<input class="form-check-input me-2" type="checkbox">
+					<span class="fw-bold taskLabel">
+						label
+					</span>
+				</span>
+				<button class="btn mx-2">
+					<img src="Res/edit.svg" alt="Edit">
+				</button>
+				<button class="btn btn-danger btn-sm deleteTask">
+					Delete
+				</button>
+			</div>
+		</div>
+
+		<div class="dialog" id="inputPopup">
+			<label for="input">Task label</label>
+			<input type="text" class="form-control">
+		</div>
+
+		<div class="dialog" id="taskExist">
+			<p class="fs-4 fw-bold text-center">Task exist</p>
+		</div>
+
+		<div class="dialog" id="invalidLabel">
+			<p class="fs-4 fw-bold text-center">Use a valid label</p>
+		</div>
+
+	</div>
+
+</body>
+
+</html>
