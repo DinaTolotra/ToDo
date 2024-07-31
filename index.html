@@ -10,18 +10,18 @@
 	<link rel="stylesheet" href="Res/Lib/bootstrap/css/bootstrap.css">
 	<script src="Res/Lib/bootstrap/js/bootstrap.js"></script>
 
-	<script src="Res/Lib/JQuery/JQuery.js"></script>
+	<script src="Res/Lib/JQuery.js"></script>
 
-	<link rel="stylesheet" href="Res/Lib/JQuery/jquery-ui/jquery-ui.css">
-	<script src="Res/Lib/JQuery/jquery-ui/jquery-ui.js"></script>
+	<link rel="stylesheet" href="Res/Lib/jquery-ui-1.13.3/jquery-ui.css">
+	<script src="Res/Lib/jquery-ui-1.13.3/jquery-ui.js"></script>
 
 	<!-- Online library -->
-	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> -->
-	<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script> -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
-	<!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/themes/smoothness/jquery-ui.css"> -->
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script>
 
 	<link rel="stylesheet" href="style.css">
 	<script src="task.js" defer></script>
@@ -31,22 +31,21 @@
 
 <body>
 
-	<header class="d-flex justify-content-between bg-dark px-3 py-2">
-		<div class="d-flex align-items-center m-2">
+	<header class="bg-dark px-3 py-2">
+		<div class="d-flex align-items-center m-2 me-auto">
 			<img src="./Res/award.svg" alt="">
 			<span class="text-white fs-4 fw-bolder">chievment</span>
 		</div>
-
-		<button class="btn btn-secondary">
-			<span class="fs-5 fw-bold">Setting</span>
-		</button>
 	</header>
 
 	<main>
-		<div class="card" id="mainCard">
+		<div class="card overflow-hidden" id="mainCard">
 
-			<div class="card-header">
+			<div class="card-header d-flex justify-content-between">
 				<span class="container fs-4 fw-bold">Todo</span>
+				<button class="btn" id="setupBtn">
+					<img src="Res/settings.svg" alt="Setting">
+				</button>
 			</div>
 
 			<div class="card-body" id="taskList">
@@ -59,7 +58,7 @@
 				<button class="btn btn-outline-primary px-5" id="createTask">
 					Create task
 				</button>
-				<button class="btn btn-outline-danger" id="resetTask" onclick="window.location.reload()">
+				<button class="btn btn-outline-danger" id="resetTask">
 					Reset task
 				</button>
 			</div>
@@ -99,6 +98,15 @@
 
 		<div class="dialog" id="invalidLabel">
 			<p class="fs-4 fw-bold text-center">Use a valid label</p>
+		</div>
+
+		<div class="dialog" id="setup">
+			<div class="input-group row">
+				<label class="col-10" for="chBox">Hide complet task?</label>
+				<div class="col-2">
+					<input type="checkbox" class="form-check-input" id="chBox" value="hideCompletTask">
+				</div>
+			</div>
 		</div>
 
 	</div>

@@ -1,19 +1,54 @@
+//  key: taskLabel
+//  elem: task
 let taskList = new Map();
 
 class Task {
-    constructor(label) {
-        this.label = label;
+    display() {
+        $("#taskList").append(this.elem);
+        this.isShown = true;
+    }
+
+    markAsComplet() {
+        this.elem.attr("complete", "true");
+        this.isComplet = true;
+    }
+
+    markAsIncomplet() {
+        this.elem.attr("complete", "false");
         this.isComplet = false;
-        
-        if (taskList.has(this.label)) {
-            $("#taskExist").dialog("open");
-        } else if (!this.label) {
-            $("#invalidLabel").dialog("open");
-        } else {
-            this.elem = copyTaskTemplate(this.label);
-            taskList.set(this.label, this);
-            this.setEvent();
-        }
+    }
+
+    toggleCompletion() {
+        if (!this.isComplet) this.markAsComplet();
+        else this.markAsIncomplet();
+    }
+
+    hide() {
+        if (this.isShown)
+            $(this.elem).toggle("fast");
+        this.isShown = false;
+    }
+
+    show() {
+        if (!this.isShown)
+            $(this.elem).toggle("fast");
+        this.isShown = true;
+    }
+
+    delete() {
+        let task = this;
+        new Promise(() => {
+            task.hide();
+        }).then(res => {
+                $(this.elem).remove();
+                taskList.delete(this.label);
+            }
+        )
+    }
+
+    toggleDisplay() {
+        if (this.isShown) this.hide();
+        else this.show();
     }
 
     setEvent() {
@@ -25,19 +60,25 @@ class Task {
             task.delete();
         });
         $(completeBox).on("click", function () {
-            let state = task.isComplet? "false": "true";
-            task.elem.attr("complete", state);
-            task.isComplet = !task.isComplet;
+            task.toggleCompletion();
+            if (hideWhenComplete)
+                task.toggleDisplay();
         });
     }
 
-    display() {
-        $("#taskList").append(this.elem);
-    }
-
-    delete() {
-        $(this.elem).remove();
-        taskList.delete(this.label);
-        console.log(taskList);
+    constructor(label) {
+        this.label = label;
+        this.isComplet = false;
+        this.isShown = true;
+        
+        if (taskList.has(this.label)) {
+            $("#taskExist").dialog("open");
+        } else if (!this.label) {
+            $("#invalidLabel").dialog("open");
+        } else {
+            this.elem = copyTaskTemplate(this.label);
+            taskList.set(this.label, this);
+            this.setEvent();
+        }
     }
 }
